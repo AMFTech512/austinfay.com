@@ -1,0 +1,19 @@
+{
+  "name": "nuxt-test",
+  "version": "1.0.0",
+  "description": "A first test of NuxtJS",
+  "author": "Austin Fay",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build && cp -r ../prod/functions/nuxt_public/dist/client ../prod/public/nuxt_assets",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "clean": "rm -r ../prod/public/nuxt_assets ../prod/functions/nuxt_public"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0",
+    "@nuxtjs/axios": "^5.3.6"
+  },
+  "devDependencies": {}
+}
