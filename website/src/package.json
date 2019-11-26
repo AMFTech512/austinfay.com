@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-test",
+  "name": "austin-fay",
   "version": "1.0.0",
   "description": "A first test of NuxtJS",
   "author": "Austin Fay",
@@ -12,8 +12,12 @@
     "clean": "rm -r ../prod/public/nuxt_assets ../prod/functions/nuxt_public"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "nuxt-vuikit": "^1.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0"
+  }
 }

@@ -6,7 +6,7 @@ module.exports =  {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: "Austin Fay",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -41,7 +41,12 @@ module.exports =  {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    'nuxt-vuikit'
   ],
+  vuikit: {
+    defaultTheme: true,
+    icons: true
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
