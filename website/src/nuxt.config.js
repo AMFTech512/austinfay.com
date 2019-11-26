@@ -41,7 +41,14 @@ module.exports =  {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'nuxt-vuikit'
+    'nuxt-vuikit',
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: 'omIlKYHVd2TSMA5AT9G4Nwtt',
+        cacheProvider: 'memory'
+      }
+    ]
   ],
   vuikit: {
     defaultTheme: true,

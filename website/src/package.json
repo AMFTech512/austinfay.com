@@ -14,7 +14,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "nuxt-vuikit": "^1.0.3"
+    "nuxt-vuikit": "^1.0.3",
+    "storyblok-nuxt": "^1.0.2"
   },
   "devDependencies": {
     "less": "^3.10.3",

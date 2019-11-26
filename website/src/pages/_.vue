@@ -1,7 +1,6 @@
 <template>
     <div>
-        <NavBar />
-        {{ path }}
+        <NavBar :stories="$store.state.stories"/>
     </div>
 </template>
 
@@ -12,13 +11,16 @@ export default {
   components: {
     NavBar
   },
-  async asyncData({ params }) {
-      return {
-          path: params.pathMatch
-      };
+  async fetch(context) {
+    await context.store.dispatch('fetchStories', context);
+    if(!context.store.state.stories.some(story => story.slug == context.params.pathMatch ) &&
+    context.params.pathMatch != '')
+        context.error({statusCode: 404, message: 'Not Found'});
   },
-  validate({ params }) {
-      return true;
+  asyncData(context) {
+    return {
+        path: context.params.pathMatch
+    };
   }
 }
 </script>
