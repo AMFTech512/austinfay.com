@@ -1,3 +1,4 @@
 export default () => ({
-    stories: []
+    stories: [],
+    activeStory: {}
 });

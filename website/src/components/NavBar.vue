@@ -4,21 +4,16 @@
             <vk-navbar-nav-item 
                 v-for="story in stories" 
                 :key="story.id" 
-                :title="story.name">
+                :title="story.name"
+                :href="`/${story.slug}`">
             </vk-navbar-nav-item>
         </vk-navbar-nav>
     </vk-navbar>
 </template>
 
 <script>
-import storyblokLivePreview from '@/middleware/storyblokLivePreview'
-
 export default {
-    mixins: [storyblokLivePreview],
-    props: ['stories'],
-    mounted() {
-        console.log(this.stories);
-    }
+    props: ['stories']
 }
 </script>
 

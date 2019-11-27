@@ -1,21 +1,55 @@
 <template>
     <div>
-        <NavBar :stories="$store.state.stories"/>
+        <component 
+          v-for="block in blocks" 
+          :key="block._uid" 
+          :is="block.component"
+          :data="block"
+          v-editable="block"
+        />
     </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar";
+import components from '@/components/index.js'
+import storyblokLivePreview from '@/middleware/storyblokLivePreview.js'
 
 export default {
-  components: {
-    NavBar
+  components,
+  mixins: [
+    storyblokLivePreview
+  ],
+  computed: {
+    blocks() {
+      return this.$store.state.activeStory.content.body;
+    }
   },
   async fetch(context) {
     await context.store.dispatch('fetchStories', context);
-    if(!context.store.state.stories.some(story => story.slug == context.params.pathMatch ) &&
-    context.params.pathMatch != '')
-        context.error({statusCode: 404, message: 'Not Found'});
+    let stories = context.store.state.stories;
+
+    // check to see if we're on the home page
+    if(context.params.pathMatch == '') {
+      context.store.commit('setActiveStory', stories[0]);
+      return;
+    }
+
+    // check to see if the page requested actually exists
+    if(!stories.some(story => {
+
+        if(story.slug == context.params.pathMatch) {
+          context.store.commit('setActiveStory', story);
+          return true
+        }
+
+        return false;
+
+      })) {
+
+      context.error({statusCode: 404, message: 'Not Found'});
+
+    }
+        
   },
   asyncData(context) {
     return {
