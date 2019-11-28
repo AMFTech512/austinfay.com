@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
+    "marked": "^0.7.0",
     "nuxt": "^2.10.2",
     "nuxt-vuikit": "^1.0.3",
     "storyblok-nuxt": "^1.0.2"

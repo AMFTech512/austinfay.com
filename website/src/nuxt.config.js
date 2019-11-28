@@ -1,3 +1,4 @@
+console.log(`Building Nuxt project for ${process.env.NODE_ENV}`);
 
 module.exports =  {
   mode: 'universal',
@@ -45,7 +46,9 @@ module.exports =  {
     [
       'storyblok-nuxt',
       {
-        accessToken: 'omIlKYHVd2TSMA5AT9G4Nwtt',
+        accessToken: (process.env.NODE_ENV == 'production')?
+        'fn3RN4u4Gu03oLoJEVR1tQtt' :
+        'omIlKYHVd2TSMA5AT9G4Nwtt',
         cacheProvider: 'memory'
       }
     ]
