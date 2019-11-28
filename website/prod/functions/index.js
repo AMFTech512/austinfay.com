@@ -11,7 +11,9 @@ function handleRequest(req, res) {
     console.log(`Incoming request: ${req.path}`);
     // res.send("Hello world!");
     res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
-    nuxt.render(req, res);
+    nuxt.renderRoute(req.path).then(result => {
+        res.send(result.html);
+    });
 }
 
 app.get('*/*', handleRequest);
