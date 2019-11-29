@@ -1,15 +1,14 @@
 <template>
-    <vk-navbar class="site-nav">
-        <vk-navbar-nav>
-            <nuxt-link 
-                v-for="story in stories" 
-                :key="story.id"
-                :to="`/${story.slug}`"
-                class="vk-navbar-item">
-                {{ story.name }}
-            </nuxt-link>
-        </vk-navbar-nav>
-    </vk-navbar>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <li
+            v-for="story in stories" 
+            :key="story.id"
+            class="nav-item">
+                <nuxt-link class="nav-link" :to="`/${story.slug}`">{{ story.name }}</nuxt-link>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -19,20 +18,5 @@ export default {
 </script>
 
 <style>
-
-.site-nav {
-    background: #231A31 !important;
-}
-
-.site-nav a {
-    color: white;
-    text-transform: capitalize;
-    text-decoration: none;
-    padding: 20px;
-}
-
-.site-nav a:hover {
-    color: grey;
-}
 
 </style>

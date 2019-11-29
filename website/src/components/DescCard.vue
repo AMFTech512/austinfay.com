@@ -1,11 +1,14 @@
 <template>
-  <vk-card 
-    class="uk-width-1-2@m desc-card"
+<div class="container desc-card">
+<div 
+    class="row"
     :style="{background: data.backgroundColor}">
-  <vk-card-title>{{ data.topic }}</vk-card-title>
-  <p v-html="descMd"></p>
-</vk-card>
-
+        <div class="col-sm-6 topic">
+            <h2>{{ data.topic }}</h2>
+        </div>
+        <div class="col-sm-6" v-html="descMd"></div>
+</div>
+</div>
 </template>
 
 <script>
@@ -26,7 +29,19 @@ export default {
 <style>
 
 .desc-card {
-    margin: 50px auto 50px auto;
+    margin: 50px 100px 50px 100px;
+    -webkit-box-shadow: 6px 6px 5px -1px rgba(204,204,204,1);
+    -moz-box-shadow: 6px 6px 5px -1px rgba(204,204,204,1);
+    box-shadow: 6px 6px 5px -1px rgba(204,204,204,1);
+}
+
+.desc-card div {
+    padding: 25px;
+}
+
+.desc-card .topic {
+    text-align: center;
+    padding: 10%;
 }
 
 </style>
