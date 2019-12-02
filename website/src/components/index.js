@@ -1,11 +1,7 @@
-import NavBar from "@/components/NavBar";
-import Jumbotron from "@/components/Jumbotron";
-import DescCard from "@/components/DescCard"
-import Header from "@/components/Header"
-
 export default {
-    NavBar,
-    Jumbotron,
-    DescCard,
-    Header
+    NavBar: () => import('@/components/NavBar'),
+    Jumbotron: () => import('@/components/Jumbotron'),
+    DescCard: () => import('@/components/DescCard'),
+    Header: () => import('@/components/Header'),
+    Container: () => import('@/components/Container')
 };

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <NavBar :stories="$store.state.stories" />
         <component 
           v-for="block in blocks" 
           :key="block._uid" 
@@ -11,8 +12,8 @@
 </template>
 
 <script>
-import components from '@/components/index.js'
-import storyblokLivePreview from '@/middleware/storyblokLivePreview.js'
+import components from '@/components/index'
+import storyblokLivePreview from '@/middleware/storyblokLivePreview'
 
 export default {
   components,

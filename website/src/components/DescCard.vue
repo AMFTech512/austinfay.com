@@ -1,5 +1,5 @@
 <template>
-<div class="container desc-card">
+<div class="desc-card">
 <div 
     class="row"
     :style="{background: data.backgroundColor}">
@@ -15,6 +15,7 @@
 import marked from 'marked';
 
 export default {
+    name: 'DescCard',
     props: [
         'data'
     ],
@@ -30,18 +31,18 @@ export default {
 
 .desc-card {
     margin: 50px 100px 50px 100px;
-    -webkit-box-shadow: 6px 6px 5px -1px rgba(204,204,204,1);
-    -moz-box-shadow: 6px 6px 5px -1px rgba(204,204,204,1);
-    box-shadow: 6px 6px 5px -1px rgba(204,204,204,1);
+    -webkit-box-shadow: 0px 0px 6px 3px rgba(191,191,191,1);
+    -moz-box-shadow: 0px 0px 6px 3px rgba(191,191,191,1);
+    box-shadow: 0px 0px 6px 3px rgba(191,191,191,1);
 }
 
 .desc-card div {
-    padding: 25px;
+    padding: 5%;
+    align-items: center;
 }
 
 .desc-card .topic {
     text-align: center;
-    padding: 10%;
 }
 
 </style>

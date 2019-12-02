@@ -13,6 +13,7 @@
 
 <script>
 export default {
+    name: 'NavBar',
     props: ['stories']
 }
 </script>
