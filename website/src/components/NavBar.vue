@@ -5,7 +5,7 @@
             v-for="story in stories" 
             :key="story.id"
             class="nav-item">
-                <nuxt-link class="nav-link" :to="`/${story.slug}`">{{ story.name }}</nuxt-link>
+                <nuxt-link class="nav-link" :to="`${story.real_path}`">{{ story.name }}</nuxt-link>
             </li>
         </ul>
     </nav>

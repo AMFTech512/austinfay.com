@@ -23,6 +23,10 @@ export default {
 
 <style>
 
+.jumbotron {
+    align-items: center;
+}
+
 .jumbotron-img img{
     border-radius: 50%;
     max-width: 50%;
@@ -30,11 +34,11 @@ export default {
 }
 
 .jumbotron-img {
-    text-align: center;
+    align-items: center;
 }
 
-.jumbotron-txt {
-    padding: 10%;
+.jumbotron-txt h2 {
+    align-items: center;
 }
 
 </style>

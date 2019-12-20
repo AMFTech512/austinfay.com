@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar :stories="$store.state.stories" />
+        <NavBar :stories="$store.state.navbar_links" />
         <component 
           v-for="block in blocks" 
           :key="block._uid" 
@@ -26,30 +26,30 @@ export default {
     }
   },
   async fetch(context) {
-    await context.store.dispatch('fetchStories', context);
-    let stories = context.store.state.stories;
 
-    // check to see if we're on the home page
-    if(context.params.pathMatch == '') {
-      context.store.commit('setActiveStory', stories[0]);
-      return;
-    }
+    // determine our path (and account for the home page)
+    let path = (context.params.pathMatch == '')? 'navbar/home' : context.params.pathMatch;
+    // console.log(`Path: ${path}`);
 
-    // check to see if the page requested actually exists
-    if(!stories.some(story => {
+    // get the navbar
+    await context.store.dispatch('fetchFolder', {
+      context,
+      path: 'navbar',
+      callback: (res) => {
+        context.store.commit('setNavBar', res.data.links);
+      }
+    });
 
-        if(story.slug == context.params.pathMatch) {
-          context.store.commit('setActiveStory', story);
-          return true
-        }
+    // get the active story
+    await context.store.dispatch('fetchStory', {
+      context,
+      path,
+      callback(res) {
+        context.store.commit('setActiveStory', res.data.story);
+      }
+    });
 
-        return false;
-
-      })) {
-
-      context.error({statusCode: 404, message: 'Not Found'});
-
-    }
+    // context.error({statusCode: 404, message: 'Not Found'});
         
   },
   asyncData(context) {

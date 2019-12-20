@@ -1,13 +1,11 @@
 <template>
-<div class="desc-card">
 <div 
-    class="row"
+    class="desc-card row"
     :style="{background: data.backgroundColor}">
         <div class="col-sm-6 topic">
             <h2>{{ data.topic }}</h2>
         </div>
         <div class="col-sm-6" v-html="descMd"></div>
-</div>
 </div>
 </template>
 
@@ -36,7 +34,7 @@ export default {
     box-shadow: 0px 0px 6px 3px rgba(191,191,191,1);
 }
 
-.desc-card div {
+.desc-card h2 {
     padding: 5%;
     align-items: center;
 }
