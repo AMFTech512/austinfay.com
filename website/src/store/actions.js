@@ -21,8 +21,7 @@ export default {
         // Load the JSON from the API
         await params.context.app.$storyapi.get(`cdn/stories/${params.path}`, {
             version: version,
-            cv: getCV(),
-            starts_with: params.path
+            cv: getCV()
         }).then(params.callback).catch(error => throwError(error, params.context));
     }
 };

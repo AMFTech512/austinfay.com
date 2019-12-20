@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand navbar-light bg-light">
+    <nav class="navbar navbar-expand navbar-light bg-light" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li
             v-for="story in stories" 

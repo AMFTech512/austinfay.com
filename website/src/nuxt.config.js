@@ -56,6 +56,9 @@ module.exports =  {
     defaultTheme: true,
     icons: true
   },
+  loading: {
+    color: 'blue'
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
