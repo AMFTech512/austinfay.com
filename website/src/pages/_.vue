@@ -1,6 +1,10 @@
 <template>
     <div>
-        <NavBar :stories="$store.state.navbar_links" />
+      <div>
+        <NavBar :data="navbar" v-editable="navbar"/>
+      </div>
+
+      <div>
         <component 
           v-for="block in blocks" 
           :key="block._uid" 
@@ -8,6 +12,7 @@
           :data="block"
           v-editable="block"
         />
+      </div>
     </div>
 </template>
 
@@ -23,22 +28,15 @@ export default {
   computed: {
     blocks() {
       return this.$store.state.activeStory.content.body;
+    },
+    navbar() {
+      return this.$store.state.navbar.content;
     }
   },
   async fetch(context) {
 
     // determine our path (and account for the home page)
-    let path = (context.params.pathMatch == '')? 'navbar/home' : context.params.pathMatch;
-    // console.log(`Path: ${path}`);
-
-    // get the navbar
-    await context.store.dispatch('fetchFolder', {
-      context,
-      path: 'navbar',
-      callback: (res) => {
-        context.store.commit('setNavBar', res.data.links);
-      }
-    });
+    let path = context.params.pathMatch;
 
     // get the active story
     await context.store.dispatch('fetchStory', {
@@ -46,6 +44,15 @@ export default {
       path,
       callback(res) {
         context.store.commit('setActiveStory', res.data.story);
+      }
+    });
+
+    // get the navbar 
+    await context.store.dispatch('fetchStory', {
+      context,
+      path: "navbar",
+      callback(res) {
+        context.store.commit('setNavBar', res.data.story);
       }
     });
 

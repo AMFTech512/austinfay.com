@@ -1,6 +1,6 @@
 export default {
-    setNavBar(store, links) {
-        store.navbar_links = links;
+    setNavBar(store, nav) {
+        store.navbar = nav;
     },
     setActiveStory(store, story) {
         store.activeStory = story;

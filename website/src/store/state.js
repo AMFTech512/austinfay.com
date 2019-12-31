@@ -1,4 +1,4 @@
 export default () => ({
-    navbar_links: [],
+    navbar: {},
     activeStory: {}
 });

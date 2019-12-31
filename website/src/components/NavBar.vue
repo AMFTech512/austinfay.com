@@ -2,10 +2,11 @@
     <nav class="navbar navbar-expand navbar-light bg-light" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li
-            v-for="story in stories" 
-            :key="story.id"
+            v-for="link in data.links" 
+            :key="link.target.id"
+            v-editable="link"
             class="nav-item">
-                <nuxt-link class="nav-link" :to="`${story.real_path}`">{{ story.name }}</nuxt-link>
+                <nuxt-link class="nav-link" :to="`/${link.target.cached_url}`">{{ link.label }}</nuxt-link>
             </li>
         </ul>
     </nav>
@@ -14,7 +15,7 @@
 <script>
 export default {
     name: 'NavBar',
-    props: ['stories']
+    props: ['data']
 }
 </script>
 
