@@ -2,16 +2,16 @@ backend:
   name: git-gateway
   branch: netlify-test
 
-media_folder: static/img
-public_folder: /img
+media_folder: website/src/static/media
+public_folder: /media
 publish_mode: editorial_workflow
-display_url: https://austinfay.com
+display_url: https://austinfay.netlify.com
 
 collections:
   - name: 'blog'
     label: 'Blog'
     format: 'frontmatter'
-    folder: 'assets/content/blog'
+    folder: 'website/src/content/blog'
     create: true
     slug: '{{title}}-{{month}}-{{day}}-{{year}}'
     editor:

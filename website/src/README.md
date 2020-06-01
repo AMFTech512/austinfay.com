@@ -1,12 +1,12 @@
-# nuxt-test
+# austinfay.com
 
-> A first test of NuxtJS
+> The code for austinfay.com
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
-$ npm run install
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev

@@ -1,25 +1,18 @@
 {
-  "name": "austin-fay",
+  "name": "austinfay.com",
   "version": "1.0.0",
-  "description": "A first test of NuxtJS",
+  "description": "The code for austinfay.com",
   "author": "Austin Fay",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build && cp -r ../prod/functions/nuxt_public/dist/client ../prod/public/nuxt_assets",
+    "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate && mkdir ../../dist && cp -r dist ../../",
-    "clean": "rm -r ../prod/public/nuxt_assets ../prod/functions/nuxt_public ../../dist dist"
+    "generate": "nuxt generate",
+    "clean": "rm -r ../dist"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.3.6",
-    "bootstrap": "^4.4.1",
-    "marked": "^0.7.0",
-    "nuxt": "^2.10.2",
-    "storyblok-nuxt": "^1.0.2"
+    "nuxt": "^2.0.0"
   },
-  "devDependencies": {
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0"
-  }
+  "devDependencies": {}
 }

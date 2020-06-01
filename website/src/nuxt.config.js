@@ -1,13 +1,11 @@
-console.log(`Building Nuxt project for ${process.env.NODE_ENV}`);
 
-module.exports =  {
+export default {
   mode: 'universal',
-  buildDir: '../prod/functions/nuxt_public',
   /*
   ** Headers of the page
   */
   head: {
-    title: "Austin Fay",
+    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -40,31 +38,7 @@ module.exports =  {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    [
-      'storyblok-nuxt',
-      {
-        accessToken: (process.env.NODE_ENV == 'production')?
-        'fn3RN4u4Gu03oLoJEVR1tQtt' :
-        'omIlKYHVd2TSMA5AT9G4Nwtt',
-        cacheProvider: 'memory'
-      }
-    ]
   ],
-  vuikit: {
-    defaultTheme: true,
-    icons: true
-  },
-  loading: {
-    color: 'blue'
-  },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
-  },
   /*
   ** Build configuration
   */
@@ -72,8 +46,10 @@ module.exports =  {
     /*
     ** You can extend webpack config here
     */
-    publicPath: '/nuxt_assets',
     extend (config, ctx) {
     }
+  },
+  generate: {
+    dir: '../dist'
   }
 }
