@@ -13,9 +13,9 @@ collections:
     format: 'frontmatter'
     folder: 'assets/content/blog'
     create: true
-    slug: '{{title}}'
+    slug: '{{title}}-{{month}}-{{day}}-{{year}}'
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }

@@ -9,7 +9,7 @@
     "build": "nuxt build && cp -r ../prod/functions/nuxt_public/dist/client ../prod/public/nuxt_assets",
     "start": "nuxt start",
     "generate": "nuxt generate && mkdir ../../dist && cp -r dist ../../",
-    "clean": "rm -r ../prod/public/nuxt_assets ../prod/functions/nuxt_public ../../dist"
+    "clean": "rm -r ../prod/public/nuxt_assets ../prod/functions/nuxt_public ../../dist dist"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
