@@ -12,6 +12,7 @@
     "clean": "rm -r dist"
   },
   "dependencies": {
+    "@nuxt/content": "^1.2.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}
