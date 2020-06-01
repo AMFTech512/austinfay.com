@@ -9,7 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "clean": "rm -r ../dist"
+    "clean": "rm -r dist"
   },
   "dependencies": {
     "nuxt": "^2.0.0"
