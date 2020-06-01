@@ -4,14 +4,16 @@ backend:
 
 media_folder: static/img
 public_folder: /img
+publish_mode: editorial_workflow
+display_url: https://austinfay.com
 
 collections:
   - name: 'blog'
     label: 'Blog'
-    format: 'json'
+    format: 'frontmatter'
     folder: 'assets/content/blog'
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{title}}'
     editor:
       preview: false
     fields:
