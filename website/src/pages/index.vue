@@ -15,7 +15,12 @@
 <script>
 export default {
   async asyncData({ $content }) {
-    const pages = await $content('blog').only(['title', 'date', 'description', 'slug']).fetch();
+    
+    const pages = await $content('blog')
+      .only(['title', 'date', 'description', 'slug'])
+      .sortBy('date', 'desc')
+      .fetch();
+
     return { pages }
   }
 }
