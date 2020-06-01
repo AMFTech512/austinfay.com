@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="61.195644mm"
+   height="17.911465mm"
+   viewBox="0 0 61.195644 17.911465"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="af-logo.svg"
+   style="enable-background:new">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4574">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4570" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1"
+         offset="1"
+         id="stop4572" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4574"
+       id="linearGradient4580"
+       x1="62.710972"
+       y1="101.92768"
+       x2="121.25003"
+       y2="101.92768"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter5025"
+       x="-0.030254238"
+       width="1.0605085"
+       y="-0.11609756"
+       height="1.2321951">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.73793942"
+         id="feGaussianBlur5027" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="47.826304"
+     inkscape:cy="26.322899"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="1592"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="background"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#000000;fill-opacity:0.98550726;stroke:#000000;stroke-width:0.26458332;stroke-opacity:1"
+       id="rect4527"
+       width="63.122021"
+       height="19.371281"
+       x="-0.1889881"
+       y="-0.23139246" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Text"
+     style="display:inline;opacity:1"
+     transform="translate(-80.186994,-96.373734)"
+     sodipodi:insensitive="true">
+    <text
+       onclick=""
+       id="text4652"
+       y="112.54763"
+       x="80.225441"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:125%;font-family:'TI-83p Mini Sans';-inkscape-font-specification:'TI-83p Mini Sans';letter-spacing:0px;word-spacing:0px;opacity:1;fill:#1cabf9;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#1cabf9;fill-opacity:1;stroke-width:0.26458332px"
+         y="112.54763"
+         x="80.225441"
+         id="tspan4650"
+         sodipodi:role="line">OxAF</tspan></text>
+  </g>
+  <g
+     inkscape:label="Blur"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-80.186994,-96.373734)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:125%;font-family:'TI-83p Mini Sans';-inkscape-font-specification:'TI-83p Mini Sans';letter-spacing:0px;word-spacing:0px;fill:#1cabf9;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter5025)"
+       x="80.225441"
+       y="112.54763"
+       id="text817"
+       onclick=""><tspan
+         sodipodi:role="line"
+         id="tspan815"
+         x="80.225441"
+         y="112.54763"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:'Courier New';-inkscape-font-specification:'Courier New, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#1cabf9;fill-opacity:1;stroke-width:0.26458332px">OxAF</tspan></text>
+  </g>
+</svg>

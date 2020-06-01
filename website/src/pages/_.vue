@@ -36,7 +36,7 @@ export default {
   async fetch(context) {
 
     // determine our path (and account for the home page)
-    let path = context.params.pathMatch;
+    let path = (context.params.pathMatch == '')? 'home' : context.params.pathMatch;
 
     // get the active story
     await context.store.dispatch('fetchStory', {
