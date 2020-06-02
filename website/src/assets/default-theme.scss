@@ -2,6 +2,11 @@ $primary:   #1CABF9;
 $secondary: #33CC00;
 $tertiary:  #707070;
 
+html, body, #__nuxt, #__layout {
+    height: 100%;
+    margin: 0px;
+}
+
 body {
     background: black;
     color: white;
@@ -11,8 +16,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
-
-
 
 @mixin text-glow($color) {
     color: $color;

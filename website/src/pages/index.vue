@@ -1,15 +1,17 @@
 <template>
   <div id="home-page">
-        <h1 class="glow-blue">Welcome to 0xAF!</h1>
-        <div>
-            <nuxt-link class="blue-link" to="/articles">Blog</nuxt-link>
-        </div>
+    <Greeting />
   </div>
 </template>
 
 <script>
-export default {
+import Greeting from '@/components/Greeting';
 
+export default {
+  name: 'HomePage',
+  components: {
+    Greeting
+  }
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
   <div id="blog-page">
-      <nuxt-link class="blue-link" to="/">Home</nuxt-link>
       <h1>{{ page.title }}</h1>
       <h5>{{ page.date }}</h5>
       <nuxt-content :document="page"></nuxt-content>
