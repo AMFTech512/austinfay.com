@@ -10,7 +10,7 @@
 <script>
 export default {
     async asyncData({ $content, params }) {
-        const page = await $content('blog', params.slug).fetch();
+        const page = await $content('articles', params.slug).fetch();
         return { page }
   }
 }

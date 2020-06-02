@@ -1,3 +1,4 @@
+const { CONTENT_TYPES } = require('./content/config/index.js');
 
 export default {
   target: 'static',
@@ -55,8 +56,12 @@ export default {
     // dir: '../dist',
     async routes () {
       const { $content } = require('@nuxt/content')
-      const files = await $content('blog').only(['path']).fetch()
-      console.log(files);
+      let files = [];
+
+      await CONTENT_TYPES.forEach(async (cType) => 
+        (await $content(cType.CONTENT_NAME).only(['path']).fetch())
+        .forEach(obj => files.push(obj)));
+
       return files.map(file => file.path === '/index' ? '/' : file.path)
     }
   }

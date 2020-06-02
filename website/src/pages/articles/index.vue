@@ -5,7 +5,7 @@
         <p><nuxt-link class="blue-link" to="/">Home</nuxt-link></p>
         These are the articles on this website:
         <div v-for="page in pages" :key="page.slug" class="content-box-green">
-          <h2><nuxt-link class="blue-link" :to="`blog/${page.slug}`">{{ page.title }}</nuxt-link></h2>
+          <h2><nuxt-link class="blue-link" :to="page.path">{{ page.title }}</nuxt-link></h2>
           <h5>{{ page.date }}</h5>
           <p>{{ page.description}}</p>
         </div>
@@ -17,8 +17,8 @@
 export default {
   async asyncData({ $content }) {
     
-    const pages = await $content('blog')
-      .only(['title', 'date', 'description', 'slug'])
+    const pages = await $content('articles')
+      .only(['title', 'date', 'description', 'slug', 'path'])
       .sortBy('date', 'desc')
       .fetch();
 

@@ -2,7 +2,7 @@
   <div id="home-page">
         <h1 class="glow-blue">Welcome to 0xAF!</h1>
         <div>
-            <nuxt-link class="blue-link" to="/blog">Blog</nuxt-link>
+            <nuxt-link class="blue-link" to="/articles">Blog</nuxt-link>
         </div>
   </div>
 </template>

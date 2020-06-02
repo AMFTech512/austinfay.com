@@ -35,6 +35,15 @@ h1, h2, h3, h4, h5, h6 {
     @include text-glow($primary);
 }
 
+.green-link {
+    color: $secondary;
+    text-decoration: none;
+}
+
+.green-link:hover {
+    @include text-glow($secondary);
+}
+
 .content-box-blue {
     @include shadowed_border($primary);
     padding: 10px 20px;
