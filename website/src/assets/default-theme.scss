@@ -1,0 +1,48 @@
+$primary:   #1CABF9;
+$secondary: #33CC00;
+$tertiary:  #707070;
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+
+
+@mixin text-glow($color) {
+    color: $color;
+    text-shadow: 0px 0px 5px $color, 0px 0px 5px $color;
+}
+
+@mixin shadowed_border($color) {
+    border: 2px solid $color;
+    -webkit-box-shadow: 0px 0px 5px 1px $color;
+    -moz-box-shadow: 0px 0px 5px 1px $color;
+    box-shadow: 0px 0px 5px 1px $color;
+}
+
+.blue-link {
+    color: $primary;
+    text-decoration: none;
+}
+
+.blue-link:hover {
+    @include text-glow($primary);
+}
+
+.content-box-blue {
+    @include shadowed_border($primary);
+    padding: 10px 20px;
+    margin: 20px auto;
+}
+
+.content-box-green {
+    @include shadowed_border($secondary);
+    padding: 10px 20px;
+    margin: 20px auto;
+}

@@ -1,8 +1,8 @@
 <template>
   <div id="blog-page">
-      <nuxt-link to="/">Home</nuxt-link>
+      <nuxt-link class="blue-link" to="/">Home</nuxt-link>
       <h1>{{ page.title }}</h1>
-      <h4>{{ page.date }}</h4>
+      <h5>{{ page.date }}</h5>
       <nuxt-content :document="page"></nuxt-content>
   </div>
 </template>
@@ -16,6 +16,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+@import '@/assets/default-theme';
+
+h1 {
+  color: $primary;
+}
+
+h5 {
+  color: $tertiary;
+}
 
 </style>
