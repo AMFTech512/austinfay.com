@@ -3,10 +3,6 @@ const { CONTENT_TYPES } = require('./content/config/index.js');
 export default {
   target: 'static',
   ssr: true,
-  server: {
-    port: 3000,
-    host: '192.168.10.127'
-  },
   components: true,
   /*
   ** Headers of the page
