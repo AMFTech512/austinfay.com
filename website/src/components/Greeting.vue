@@ -39,7 +39,9 @@ export default {
     background-image: url('/site-assets/components/greeting/greeting-bg.svg');
     background-position: center;
     background-size: 120%;
-    height: 100%;
+    // height: 100%;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
