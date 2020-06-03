@@ -9,7 +9,7 @@ display_url: https://austinfay.netlify.com
 
 collections:
   - name: 'articles'
-    label: 'Articles'
+    label: 'Article'
     format: 'frontmatter'
     folder: 'website/src/content/articles'
     create: true
