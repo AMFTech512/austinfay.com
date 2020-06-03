@@ -8,16 +8,31 @@ publish_mode: editorial_workflow
 display_url: https://austinfay.netlify.com
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
+  - name: 'articles'
+    label: 'Articles'
     format: 'frontmatter'
-    folder: 'website/src/content/blog'
+    folder: 'website/src/content/articles'
     create: true
     slug: '{{title}}-{{month}}-{{day}}-{{year}}'
+    summary: 'description'
     editor:
       preview: true
+    preview_path: 'blog/{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - label: "Special Pages"
+    name: "special"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "website/src/content/special/home.md"
+        fields:
+          - {label: "Jumbo Message", name: jumbo_msg, widget: string}
+          - {label: "Long Message", name: long_msg, widget: string}
+          - {label: "Call to Action Button Text", name: cta_txt, widget: string}
+          - {label: "Call to Action Button Link", name: cta_href, widget: string}
+          - {label: "Bottom Text", name: scroll_txt, widget: string}
+          - {label: "Body", name: body, widget: markdown}
