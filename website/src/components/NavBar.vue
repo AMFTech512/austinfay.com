@@ -1,6 +1,6 @@
 <template>
   <nav id="default-navbar">
-      <img src="@/static/site-assets/global/af-logo-prod.svg" alt="AF Logo">
+      <img class="site-logo" src="@/static/site-assets/global/af-logo-prod.svg" alt="AF Logo">
       <ul>
           <li><nuxt-link to="/">Home</nuxt-link></li>
           <li><nuxt-link to="/articles">Articles</nuxt-link></li>
@@ -35,11 +35,12 @@ export default {
         ul {
             list-style: none;
             margin: 20px 40px;
+            padding: 0;
         }
 
         li {
             display: inline;
-            margin: 10px;
+            margin: 7px;
 
             a {
                 color: white;
@@ -50,6 +51,26 @@ export default {
                 @include text-glow($primary);
             }
         }
+
+        @media only screen and (max-width: 768px) {
+            
+            justify-content: center;
+            min-height: 40px;
+
+            .site-logo {
+                display: none;
+            }
+
+            ul {
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+            }
+        }
+
+        // @media only screen and (max-width: 400px) {
+        // }
     }
 
 </style>

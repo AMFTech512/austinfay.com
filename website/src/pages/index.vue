@@ -1,6 +1,6 @@
 <template>
   <div id="home-page">
-    <Greeting />
+    <nuxt-content :document="page"></nuxt-content>
   </div>
 </template>
 
@@ -9,12 +9,18 @@ import Greeting from '@/components/Greeting';
 
 export default {
   name: 'HomePage',
-  components: {
-    Greeting
+  components: { Greeting },
+  async asyncData({ $content, params }) {
+    const page = await $content('special', 'home').fetch();
+    return { page };
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.nuxt-content {
+  height: 100%;
+}
 
 </style>

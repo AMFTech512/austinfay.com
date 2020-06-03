@@ -1,16 +1,17 @@
 <template>
   <div class="greeting-comp">
       <div class="jumbo-msg">
-          <h1>Welcome to <span style="color: #1CABF9; text-shadow: 0px 0px 10px #1CABF9">0xAF</span>!</h1>
+          <!-- <h1>Welcome to <span style="color: #1CABF9; text-shadow: 0px 0px 10px #1CABF9">0xAF</span>!</h1> -->
+          <h1 v-html="jumbo_msg"></h1>
       </div>
       <div class="long-msg">
-          <p>Are you interested in computers? Do you like to code? Do you like to hack? Well, you've come to the right place. This website is all about computer science. There are articles and videos for you to watch. Feel free to browse all the content on this site!</p>
+          <p v-html="long_msg"></p>
       </div>
       <div class="cta">
-          <a href="">YouTube Channel</a>
+          <a :href="cta_href">{{ cta_txt }}</a>
       </div>
       <div class="scroll-down-desc">
-          <p>Featured Episode</p>
+          <p>{{ scroll_txt }}</p>
       </div>
       <div class="scroll-down">
           <img src="@/static/site-assets/components/greeting/scroll-triangle.svg" alt="Scroll Down">
@@ -20,7 +21,14 @@
 
 <script>
 export default {
-
+    name: 'GreetingComponent',
+    props: [
+        'jumbo_msg',
+        'long_msg',
+        'cta_txt',
+        'cta_href',
+        'scroll_txt'
+    ]
 }
 </script>
 
@@ -57,7 +65,6 @@ export default {
             background: $secondary;
             padding: 10px;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 12pt;
             font-weight: bold;
             text-decoration: none;
             color: black;
@@ -70,6 +77,18 @@ export default {
 
     .scroll-down-desc {
         @include text-glow($primary);
+    }
+
+    @media only screen and (max-width: 768px) {
+        .jumbo-msg {
+            font-size: 12pt;
+            margin: 10px;
+        }
+
+        .long-msg {
+            // font-size: 10pt;
+            width: 90%;
+        }
     }
 }
 

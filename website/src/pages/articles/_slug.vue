@@ -8,9 +8,9 @@
 
 <script>
 export default {
-    async asyncData({ $content, params }) {
-        const page = await $content('articles', params.slug).fetch();
-        return { page }
+  async asyncData({ $content, params }) {
+    const page = await $content('articles', params.slug).fetch();
+    return { page };
   }
 }
 </script>
