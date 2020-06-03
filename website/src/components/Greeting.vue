@@ -41,7 +41,7 @@ export default {
     background-size: 120%;
     // height: 100%;
     height: auto;
-    min-height: 100vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +54,6 @@ export default {
 
     .long-msg {
         width: 50%;
-        min-width: 350px;
         margin: 0 auto;
         padding: 0 10px;
     }
