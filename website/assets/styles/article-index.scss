@@ -14,12 +14,11 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
+        align-items: flex-start;
     }
 
     .article-list-item {
         border: 2px solid black;
-        min-height: 230px;
-        overflow: hidden;
         flex-basis: 300px;
         
         margin: 0 10px 40px 10px;
@@ -30,9 +29,7 @@
             > div {
                 padding: 5px;
                 color: white;
-                height: 100%;
-                
-    
+                    
                 h5, h3 {
                     margin: 2px;
                 }
