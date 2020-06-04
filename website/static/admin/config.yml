@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
-  branch: netlify-test
+  branch: hugo-test
 
-media_folder: website/src/static/media
+media_folder: website/static/media
 public_folder: /media
 publish_mode: editorial_workflow
 display_url: https://austinfay.netlify.com
@@ -11,7 +11,7 @@ collections:
   - name: 'articles'
     label: 'Article'
     format: 'frontmatter'
-    folder: 'website/src/content/articles'
+    folder: 'website/content/articles'
     create: true
     slug: '{{title}}-{{month}}-{{day}}-{{year}}'
     summary: '{{title}} - {{date}}'
@@ -28,11 +28,6 @@ collections:
     files:
       - label: "Home Page"
         name: "home"
-        file: "website/src/content/special/home.md"
+        file: "website/content/home.md"
         fields:
-          - {label: "Jumbo Message", name: jumbo_msg, widget: string}
-          - {label: "Long Message", name: long_msg, widget: string}
-          - {label: "Call to Action Button Text", name: cta_txt, widget: string}
-          - {label: "Call to Action Button Link", name: cta_href, widget: string}
-          - {label: "Bottom Text", name: scroll_txt, widget: string}
           - {label: "Body", name: body, widget: markdown}
