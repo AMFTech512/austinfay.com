@@ -9,6 +9,16 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+*::selection {
+    background: lightgray;
+    color: white;
+}
+
+*::-moz-selection {
+    background: gray;
+    color: white;
+}
+
 #default-layout {
     display: flex;
     flex-direction: column;

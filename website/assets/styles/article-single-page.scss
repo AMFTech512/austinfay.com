@@ -1,10 +1,46 @@
 #article-single-page {
 
-    h1 {
-        color: $primary;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    @media only screen and (max-width: 1200px) {
+        grid-template-columns: 0 2fr 1fr;
     }
-    
-    h5 {
-        color: $tertiary;
+
+    @media only screen and (max-width: 768px) {
+        grid-template-columns: auto;
     }
+
+    header {
+        padding: 20px;
+        padding-bottom: 0;
+
+        h1 {
+            color: $primary;
+        }
+        
+        h5 {
+            color: $tertiary;
+            font-weight: bold;
+        }
+    }
+
+    article {
+        padding: 0 20px;
+    }
+
+    .grid-item {
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.5%;
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
 }
