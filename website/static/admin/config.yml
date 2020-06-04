@@ -14,7 +14,6 @@ collections:
     folder: 'website/content/articles'
     create: true
     slug: '{{title}}-{{month}}-{{day}}-{{year}}'
-    summary: '{{title}} - {{date}}'
     editor:
       preview: true
     preview_path: 'blog/{{slug}}'
