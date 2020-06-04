@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div id="article-index-page">
+    <h1>Articles</h1>
+    <div>
+        These are the articles on this website:
+        {{ range .Pages }}
+            <div class="content-box-green">
+                <h2><a class="blue-link" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <h5>{{ .Date.Format "January 2, 2006" }}</h5>
+                <p>{{ .Description }}</p>
+            </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,8 @@
+baseURL: "/"
+languageCode: "en-us"
+title: "0xAF"
+copyright: "Copyright &copy; 2020 Austin Fay. All rights reserved."
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
