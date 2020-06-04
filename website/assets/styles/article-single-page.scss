@@ -1,7 +1,7 @@
 #article-single-page {
 
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 2fr;
 
     @media only screen and (max-width: 1200px) {
         grid-template-columns: 0 2fr 1fr;
@@ -9,6 +9,13 @@
 
     @media only screen and (max-width: 768px) {
         grid-template-columns: auto;
+
+        .toc {
+            grid-row: 1 / 2;
+            aside {
+                margin: 20px auto;
+            }
+        }
     }
 
     header {
@@ -27,6 +34,26 @@
 
     article {
         padding: 0 20px;
+
+        h1 {
+            color: $secondary;
+        }
+    }
+
+    aside {
+        width: 80%;
+        margin: 20% auto;
+        padding: 10px;
+        position: sticky;
+        top: 10%;
+        @include shadowed_border($secondary);
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            @include text-glow($primary);
+        }
     }
 
     .grid-item {
