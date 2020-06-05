@@ -19,6 +19,27 @@ body {
     color: white;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $primary_m1;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $primary_m2; 
+}
+
 #default-layout {
     display: flex;
     flex-direction: column;
@@ -32,18 +53,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-}
-
-@mixin text-glow($color) {
-    color: $color;
-    text-shadow: 0px 0px 5px $color, 0px 0px 5px $color;
-}
-
-@mixin shadowed_border($color) {
-    border: 2px solid $color;
-    -webkit-box-shadow: 0px 0px 5px 1px $color;
-    -moz-box-shadow: 0px 0px 5px 1px $color;
-    box-shadow: 0px 0px 5px 1px $color;
 }
 
 .blue-link {

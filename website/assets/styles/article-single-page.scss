@@ -31,20 +31,90 @@
         }
     }
 
+    code {
+        background: $tertiary_m1;
+        border: 2px solid $tertiary_m1;
+    }
+
     article {
         padding: 0 20px;
+        margin: 20px auto;
 
         h1 {
             color: $secondary;
+            font-size: 24pt;
+        }
+
+        .highlight {
+            padding: 10px;
+
+            code {
+                background: initial;
+                border: initial;
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+
+            th {
+                padding: 10px 0;
+                border-right: 2px solid $primary_m1;
+            }
+
+            th:last-child {
+                border-right: none;
+            }
+
+            td {
+                padding: 15px;
+                border-top: 2px solid $primary_m1;
+                border-right: 2px solid $primary_m1;
+            }
+
+            td:last-child {
+                border-right: none;
+            }
+        }
+
+        dl {
+            @include shadowed_border($primary);
+            padding: 10px;
+
+            dt {
+                font-size: 16pt;
+                margin: 5px;
+                color: $secondary;
+            }
+        }
+
+        blockquote {
+            border-left: 2px solid $primary;
+            p { 
+                padding: 5px 10px; 
+                color: $tertiary_p1;
+            }
+        }
+
+        a {
+            color: $primary;
+            text-decoration: none;
+        }
+
+        a:hover {
+            @include text-glow($primary);
         }
     }
 
     aside {
         width: 80%;
+        max-height: 80vh;
+        overflow-y: scroll;
         margin: 20% auto;
         padding: 10px;
         position: sticky;
         top: 10%;
+
         @include shadowed_border($secondary);
         a {
             text-decoration: none;
