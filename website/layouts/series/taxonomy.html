@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div id="series-page">
+    <div class="series-item">
+        <img src="/site-assets/global/gray-rect.svg" alt="Series Image">
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Content }}</p>
+    </div>
+    <h2>Episodes</h2>
+    <div class="container">
+        <div class="article-list-grid">
+            {{ range .Pages }}
+                {{ partial "article-list-item.html" . }}
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}

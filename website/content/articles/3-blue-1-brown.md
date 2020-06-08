@@ -4,6 +4,7 @@ date: 2020-06-04T16:08:44.766Z
 description: This time, you get to see an episode from 3Blue1Brown...
 author: Grant Sanderson
 ytID: QvuQH4_05LI
+series: ["computing-through-history"]
 ---
 
 # Introduction

@@ -1,10 +1,12 @@
 {{ define "main" }}
     <div id="series-index">
+        {{ range .Pages }}
         <div class="series-item">
             <img src="/site-assets/global/gray-rect.svg" alt="Series Image">
-            <h1>Computing Through History</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ligula nunc. Phasellus magna nulla, facilisis eu tellus nec, varius mollis justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In ligula mauris, ornare id elit ac, laoreet auctor metus. Duis eu interdum purus, eu auctor metus. Nunc laoreet, nisl at ultrices tempor, diam risus convallis diam, efficitur vulputate risus sapien sit amet justo. Donec sagittis, dolor et rutrum mattis, est neque rutrum tellus, et condimentum turpis lorem non felis. Curabitur porttitor mauris dictum, consequat orci ut, tincidunt sapien. Donec placerat pulvinar ex, in accumsan augue.</p>
-            <a class="green-link" href="#">View Episodes</a>
+            <h1>{{ .Title }}</h1>
+            <p>{{ .Content }}</p>
+            <a class="green-link" href="{{ .Permalink }}">View Episodes</a>
         </div>
+        {{ end }}
     </div>
 {{ end }}

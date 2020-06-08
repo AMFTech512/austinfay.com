@@ -2,16 +2,17 @@
 
     padding: 20px;
 
-    .series-item {
-        
-        text-align: center;
+}
+.series-item {
+    
+    text-align: center;
 
-        > h1 {
-            color: $primary;
-        }
+    > h1 {
+        color: $primary;
+        padding: 0 10px;
+    }
 
-        > img {
-            width: 100%;
-        }
+    > img {
+        width: 100%;
     }
 }
