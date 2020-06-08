@@ -1,0 +1,17 @@
+#series-index {
+
+    padding: 20px;
+
+    .series-item {
+        
+        text-align: center;
+
+        > h1 {
+            color: $primary;
+        }
+
+        > img {
+            width: 100%;
+        }
+    }
+}
