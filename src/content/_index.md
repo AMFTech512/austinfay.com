@@ -4,13 +4,14 @@ description: Welcome to AustinFay.com. Here you will find all sorts of articles 
 ---
 
 {{< greeting
-    jumbo_msg="Learn Computing"
-    long_msg="Are you interested in computers? Do you like to write cool programs, make websites, build electronics, or tinker inside Linux? Well, you've come to the right place. This website is all about computers. There are articles and videos for you to watch. Feel free to browse all the content on this site!"
-    scroll_txt="Featured Article" >}}
+    jumbo_msg="Under Construction 🚧"
+    long_msg="Check back here when I've developed this more :p"
+    >}}
 <!-- OPTIONAL ATTRIBUTES FOR GREETING
 cta_txt="YouTube Channel"
-cta_href="https://youtube.com" -->
+cta_href="https://youtube.com" 
+scroll_txt="Featured Article" -->
 
-{{< featured-ep 
+<!-- {{< featured-ep 
     type="Article"
-    ref="apps-script-gives-cors-error" >}}
+    ref="apps-script-gives-cors-error" >}} -->
