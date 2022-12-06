@@ -1,0 +1,133 @@
+html, body, #__nuxt, #__layout {
+    height: 100%;
+    margin: 0px;
+}
+
+body {
+    background: black;
+    color: #cecece;
+    font-family: 'Courier Prime', Courier, monospace;
+    font-size: 11pt;
+    line-height: 1.4rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background: lightgray;
+    color: white;
+}
+
+*::-moz-selection {
+    background: gray;
+    color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $primary_m1;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $primary_m2; 
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+}
+
+a:hover {
+    @include text-glow($primary);
+}
+
+#default-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  
+    .current-page {
+      flex-grow: 1;
+    }
+}
+
+.default-single {
+    width: 60%;
+    // background-color: red;
+    margin: 20px auto;
+
+    header {
+        text-align: center;
+        
+        h1 {
+            color: $primary;
+            font-size: 36pt;
+        }
+    }
+
+    p {
+        min-width: 300px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .default-single {
+        width: 90%;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: "Noto mono","Courier New", monospace;
+    line-height: 2rem;
+}
+
+.blue-link {
+    color: $primary;
+    text-decoration: none;
+}
+
+.blue-link:hover {
+    @include text-glow($primary);
+}
+
+.green-link {
+    color: $secondary;
+    text-decoration: none;
+}
+
+.green-link:hover {
+    @include text-glow($secondary);
+}
+
+.content-box-blue {
+    @include shadowed_border($primary);
+    padding: 10px 20px;
+    margin: 20px auto;
+}
+
+.content-box-green {
+    @include shadowed_border($secondary);
+    padding: 10px 20px;
+    margin: 20px auto;
+}

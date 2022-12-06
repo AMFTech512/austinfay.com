@@ -1,0 +1,52 @@
+.featured-ep-comp {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @include shadowed-border($secondary);
+
+    > div {
+        margin: 0 20px;
+    }
+
+    .ep-meta {
+        h4, time {
+            color: $tertiary_p1;
+        }
+
+        h1 {
+            color: $primary;
+            margin-bottom: 10px;
+        }
+    }
+
+    .ep-image {
+        // min-width: 300px;
+        flex-basis: 50%;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+
+        .ep-image {
+            flex-basis: 90%;
+        }
+
+        .ep-meta {
+            h1 {
+                font-size: 14pt;
+            }
+        }
+    }
+}

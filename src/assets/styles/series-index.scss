@@ -1,0 +1,30 @@
+#series-index {
+
+    padding: 20px;
+
+}
+.series-item {
+    
+    border: 1px solid $tertiary;
+    margin-bottom: 20px;
+
+    > div {
+
+        padding: 20px;
+        margin: 0;
+        border: none;
+
+        > h1 {
+            color: $primary;
+        }
+
+        > p {
+            padding-left: 10px;
+        }
+
+        > img {
+            width: 100%;
+        }
+    }
+
+}

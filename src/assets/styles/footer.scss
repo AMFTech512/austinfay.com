@@ -1,0 +1,9 @@
+#default-footer {
+    text-align: center;
+    padding: 20px;
+    @include shadowed_border($primary);
+
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}

@@ -1,0 +1,13 @@
+{{ define "main" }}
+    <div id="series-index">
+        {{ range .Pages }}
+        <div class="series-item">
+            <div class="series-meta">
+                <h1>{{ .Title }}</h1>
+                <p>{{ .Content }}</p>
+                <a class="green-link" href="{{ .Permalink }}">View Episodes</a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+{{ end }}

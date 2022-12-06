@@ -1,0 +1,21 @@
+<div class="greeting-comp">
+    <div class="jumbo-msg">
+        <h1>{{ .Get "jumbo_msg" | safeHTML }}</h1>
+    </div>
+    <div class="long-msg">
+        <p>{{ .Get "long_msg" | safeHTML }}</p>
+    </div>
+    {{ if .Get "cta_txt" }}
+        <div class="cta">
+            <a href='{{ .Get "cta_href" }}'>{{ .Get "cta_txt" }}</a>
+        </div>
+    {{ end }}
+    {{ if .Get "scroll_txt" }}
+    <div class="scroll-down-desc">
+        <p>{{ .Get "scroll_txt" }}</p>
+    </div>
+    {{ end }}
+    <div class="scroll-down">
+        <img src="/site-assets/components/greeting/scroll-triangle.svg" alt="Scroll Down">
+    </div>
+</div>

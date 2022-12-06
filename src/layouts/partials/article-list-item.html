@@ -1,0 +1,14 @@
+<div class="article-list-item">
+    <a href="{{ .Permalink }}">
+    {{ if .Params.ytID }}
+        <img src="https://img.youtube.com/vi/{{ .Params.ytID }}/mqdefault.jpg" alt="{{ .Title }}">
+    {{ end }}
+    <div>
+        <h5 {{ if not .Params.ytID }} class="gray-txt" {{ end }}>{{ .Date.Format "January 2, 2006" }}</h5>
+        <h3 class="blue-link">{{ .Title }}</h3>
+        {{ if not .Params.ytID }}
+            <p>{{ .Description }}</p>
+        {{ end }}
+    </div>
+</a>
+</div>
