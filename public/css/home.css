@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #001226;
+  color: #e0e0e0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.heading {
+  text-align: center;
+}
+
+.contact-link {
+  margin: 0;
+}
+
+pre,
+code {
+  margin: 0;
+  line-height: 1.5em;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+a {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.gpg-key {
+  text-align: left;
+  font-family: monospace;
+  background-color: black;
+  color: #e0e0e0;
+  padding: 20px;
+  max-width: min(500px, 80%);
+  border: 2px solid white;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.copy-button {
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  opacity: 0.8;
+}
+
+.copy-button:active {
+  opacity: 0.5;
+}
