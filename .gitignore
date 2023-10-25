@@ -1,5 +1,4 @@
 _site/
 _gen/
-.vscode
 node_modules/
 .DS_Store

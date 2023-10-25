@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +9,38 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <link rel="icon" href="/images/austin-headshot.jpg" />
+
+    <!-- Basic SEO -->
+    <meta
+      name="description"
+      content="Hi, I'm Austin. I'm a web developer from Denver, Colorado."
+    />
+    <meta
+      name="keywords"
+      content="Austin, Fay, web, fullstack, javascript, react, vue"
+    />
+    <meta name="author" content="Austin Fay" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- OpenGraph metadata for social sharing -->
+    <meta property="og:title" content="Austin Fay" />
+    <meta
+      property="og:description"
+      content="Hi, I'm Austin. I'm a web developer from Denver, Colorado."
+    />
+    <meta property="og:image" content="/images/austin-headshot.jpg" />
+    <meta property="og:url" content="https://austinfay.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card metadata for Twitter sharing -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Austin Fay's official website" />
+    <meta
+      name="twitter:description"
+      content="Hi, I'm Austin. I'm a web developer from Denver, Colorado."
+    />
+    <meta name="twitter:image" content="/images/austin-headshot.jpg" />
   </head>
   <body>
     <main>
@@ -20,7 +51,7 @@
       />
       <div class="heading">
         <h1>Hi, I'm Austin</h1>
-        <p>I'm a software engineer from <strong>Denver, Colorado</strong>.</p>
+        <p>I'm a web developer from <strong>Denver, Colorado</strong>.</p>
       </div>
       <p class="contact-link">
         <i class="far fa-envelope"></i>
@@ -63,8 +94,8 @@ ANLGeDmBgeXGIFd3zYfEg0omkA+S8BcV0xmplAd3ttEH
         el.select();
         document.execCommand("copy");
         document.body.removeChild(el);
-
-        // Change button text
+        
+        // Change button text 
         const copyButton = document.querySelector(".copy-button");
         copyButton.innerText = "Copied!";
       }
