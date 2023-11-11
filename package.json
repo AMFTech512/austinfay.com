@@ -7,12 +7,17 @@
     "dev": "eleventy --serve"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.26.3",
     "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-vite": "^4.0.0",
+    "prismjs": "^1.29.0",
+    "sass": "^1.69.5",
+    "vite-plugin-prismjs": "^0.0.8"
   }
 }

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Austin Fay</title>
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/styles/global.scss" />
+    <link rel="stylesheet" href="/styles/home.scss" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -15,7 +16,7 @@
     <!-- Basic SEO -->
     <meta
       name="description"
-      content="Hi, I'm Austin. I'm a web developer from Denver, Colorado."
+      content="{{ site.description }}"
     />
     <meta
       name="keywords"
@@ -56,31 +57,20 @@
       </div>
       <p class="contact-link">
         <i class="far fa-envelope"></i>
-        <a href="mailto:austin@austinfay.com">austin@austinfay.com</a>
+        <a href="{{ site.emailLink }}">{{ site.email }}</a>
       </p>
       <p class="contact-link">
         <i class="fab fa-twitter"></i>
-        <a href="https://twitter.com/realaustinfay" target="_blank"
-          >@realaustinfay</a
+        <a href="{{ site.twitterUrl }}" target="_blank"
+          >{{ site.twitterHandle }}</a
         >
       </p>
       <p class="contact-link">
         <i class="fab fa-github"></i>
-        <a href="https://github.com/amftech512" target="_blank">amftech512</a>
+        <a href="{{ site.githubUrl }}" target="_blank">{{ site.githubHandle }}</a>
       </p>
       <div class="gpg-key">
-        <pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
-mDMEZThaMRYJKwYBBAHaRw8BAQdAXSsJ2dWpdJkz1EAMewUEEnZ4woaV1puU+S36
-npkcGe+0IUF1c3RpbiBGYXkgPGF1c3RpbkBhdXN0aW5mYXkuY29tPoiTBBMWCgA7
-FiEE2HM2Q5kua82BQRVLoZO/a+UyZXQFAmU4WjECGwMFCwkIBwICIgIGFQoJCAsC
-BBYCAwECHgcCF4AACgkQoZO/a+UyZXS59wEA00fDK8ZtJL0OpvFM2GH/mJXV5hAA
-1Jmj2+SaETwXjgEBAMA8Uq5xXu2wsQ7eD3LE5nMijieFe3VsAr96bUEaufgEuDgE
-ZThaMRIKKwYBBAGXVQEFAQEHQNvVtUIYeTaip/JsOTZLrwWkWMh9+y9Eoc8L7AlH
-g8x6AwEIB4h4BBgWCgAgFiEE2HM2Q5kua82BQRVLoZO/a+UyZXQFAmU4WjECGwwA
-CgkQoZO/a+UyZXRB3AEApobnGGzj3EuqeyvXjKpQn9kcEmKLCBi9JYiWX74OK7sB
-ANLGeDmBgeXGIFd3zYfEg0omkA+S8BcV0xmplAd3ttEH
-=LEjT
------END PGP PUBLIC KEY BLOCK-----</code></pre>
+        <pre><code>{{ site.gpgKey }}</code></pre>
       </div>
       <button onclick="copyGpgToClipboard()" class="copy-button">
         Copy to Clipboard
