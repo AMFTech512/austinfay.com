@@ -1,6 +1,6 @@
 ---
 title: Starting a Blog
-datePublished: November 10, 2023
+datePublished: November 12, 2023
 ---
 
 Hello! This is my attempt at starting a blog. If there is at least one post after this, then you know that it was at least somewhat of a success.
@@ -17,7 +17,7 @@ The first thing I had to consider is whether to use a blogging platform like [me
 
 By the time I had started building the blog, I had already started building my personal website using [11ty](https://www.11ty.dev/). I decided to use 11ty because it was the easiest for me. Configuration files are written in JSON, templates can be written in a variety of different templating languages, it uses npm for its tooling (though I opted to use [bun](https://bun.sh)), and most importantly, it easily converts mardown files into html files using your templates. I didn't think it was worth using some fancy framework like Next or Nuxt because I figured that everything would be statically generated, and if I need a fancy UI framework, I can just include it later. The goal with this site is to keep it stupid simple.
 
-To host the the actual site, I opted for [Netflify](https://netlify.com). This goes along with the theme of simplicity for this project. All you have to do to get started is upload a folder with static files, and Bob's your uncle. Netlify also has a build feature that allows you to run a build script when you push to a git repository (a feature that I ended up utilizing), but we'll get into that later.
+To host the the actual site, I opted to use [Netflify](https://netlify.com). This goes along with the theme of simplicity for this project. All you have to do to get started is upload a folder with static files, and Bob's your uncle. Netlify also has a build feature that allows you to run a build script when you push to a git repository (a feature that I ended up utilizing), but we'll get into that later.
 
 ## Getting started with 11ty
 
@@ -88,6 +88,65 @@ Now when I run `bunx @11ty/eleventy`, it generates the following html file:
 
 Neat, huh?
 
+## Setting up the project
+
+Like I demonstrated above, you can technically run 11ty by itself with just a collection of source files and no configuration. However, there are more advanced things I'd like to do with this project such including installing dependencies and defining build scripts. For that, I created an npm package (using bun) and installed 11ty as a dependency. To do this, I simply ran
+
+```sh
+bun init
+```
+
+This created a bunch of files, including a `package.json` file, a tsconfig, a gitignore, a readme, and a starter `index.ts` file. Since I'm not actually writing a Typescript program, I deleted the `index.ts` file, but all of the rest of the files were useful. 
+
+The next step was to set up 11ty. I did this by simply running
+  
+```sh
+bun install @11ty/eleventy
+```
+
+Then I added a couple of helper scripts to my `package.json` file for building and testing the site:
+
+```json
+{
+  // ...
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  }
+  // ...
+}
+```
+
+Now I can run `bun run build` to build the site, and `bun run dev` to build the site and serve it locally.
+
+## Setting up the content directory
+
+I want all of the content for this site (the markdown files) to live in its own directory and be separated from the rest of the code. That way, if I ever want to migrate the content to a different site or platform, I can do so easily. To do this, I had to define an 11ty config file `eleventy.config.js`.
+
+```js
+module.exports = function (eleventyConfig) {
+  return {
+    dir: {
+      input: "content",
+    },
+  };
+};
+```
+
+Now in my site, I have a `content` directory. All source files (markdown, handlebars, html) can live in there and 11ty will use them to build the site.
+
+## Deploying to Netlify
+
+Since I turned the site into an npm package, it is super easy to configure Netlify to build and deploy it. After creating a new site in Netlify and linking it to my Github repository, I added the following `netlify.toml` file
+  
+```toml
+[build]
+  publish = "_site"
+  command = "bun run build"
+```
+
+Now whenever I push to the master branch of the repository, Netlify automatically runs the build script and deploys the site. That makes it super easy to update the site!
+
 ## Setting up Vite and Sass
 
 Even though CSS has gotten a lot of new features in the recent months, I still prefer to use [Sass](https://sass-lang.com/) because it has a few more features that I really like using (mainly nested selectors). Unfortunately, in order to use Sass, you need to somehow include the Sass compilation to the build step. This is usually done in a bundler, such as [Vite](https://vitejs.dev/). In addition to processing our Sass files, Vite will also allow us to easily bundle any frameworks (like [Vue](https://vuejs.org/)) for any pages that need it.
@@ -144,7 +203,7 @@ Then in my template, I included the script:
 <script type="module" src="/scripts/prism.ts"></script>
 ```
 
-I also installed the [vite-plugin-prismjs]() Vite plugin so that I could configure it with Vite. I modified my `eleventy.config.js` file to look like this:
+I also installed the [vite-plugin-prismjs](https://github.com/code-farmer-i/vite-plugin-prismjs) Vite plugin so that I could configure it with Vite. I modified my `eleventy.config.js` file to look like this:
 ```js
 const EleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
 const VitePrismPlugin = require("vite-plugin-prismjs").default;
@@ -180,9 +239,91 @@ module.exports = function (eleventyConfig) {
 
 Now all of my code has pretty syntax highlighting. Yay!
 
+## Adding features to the markdown parser
+
+It's pretty convenient that all you have to do to render markdown files is to include `{{{ content }}}` somewhere in your template. The only unfortunate part about that is that it doesn't offer much flexibility when it comes to *how* the content is rendered. There are a couple of things that I want to do with the content of the markdown files:
+
+1. Make all external links open in a new tab
+2. Make all headings have an anchor link that can be used to link to that heading
+
+To do this, I consulted [Phind](https://phind.com), which is just a wrapper around ChatGPT. It gave me the following answer.
+
+11ty uses [markdown-it](https://github.com/markdown-it/markdown-it) under the hood, so to configure it, we have to start by installing it as a dependency of our project:
+
+```sh
+bun install markdown-it
+```
+
+Then we have to define custom plugins for it. Phind wrote the following plugin for me that I saved in `markdown-it-plugins.js`:
+
+```js
+function markdownItExternalLinks(md) {
+  const defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
+
+  md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+    const token = tokens[idx];
+    const hrefIndex = token.attrIndex('href');
+    if (hrefIndex >= 0) {
+      const hrefAttr = token.attrs[hrefIndex];
+      const url = hrefAttr[1];
+      if (url && !url.startsWith('/') && !url.startsWith('#')) {
+        token.attrPush(['target', '_blank']);
+        token.attrPush(['rel', 'noopener noreferrer']);
+      }
+    }
+    return defaultRender(tokens, idx, options, env, self);
+  };
+}
+
+module.exports = {
+  markdownItExternalLinks
+}
+```
+
+Fortunately, for converting all headings into links, there's already a community plugin for that called [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). Using it was as simple as installing it:
+
+```sh
+bun install markdown-it-anchor
+```
+
+Now we have to configure 11ty to use these plugins. To do that, I modified my `eleventy.config.js` file to look like this:
+
+```js
+const { markdownItExternalLinks } = require("./markdown-it-plugins");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+
+module.exports = function (eleventyConfig) {
+  // ...
+
+  // configure custom md parser
+  const md = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true
+  });
+  
+  // use md plugins
+  md.use(markdownItExternalLinks);
+  md.use(markdownItAnchor, {
+    permalink: true,
+    permalinkClass: 'direct-link',
+    permalinkSymbol: '#'
+  });
+  
+  eleventyConfig.setLibrary('md', md);
+
+  // ...
+};
+```
+
+Now all of my external links upen up with new tabs, and all of my headings have anchor links!
+
 ## Conclusion
 
-That's it for this blog post. I hope you enjoyed it!
+That covers most of what I did to set up this site. I'm making all of the code for it public, and you can find the repository [here](https://github.com/AMFTech512/austinfay.com). This will probably be a live document that I update as I add more features to the site, so I'll try to indicate when I update it. Thanks for reading!
 
 ### Resources I used to build this project
 
@@ -192,3 +333,6 @@ That's it for this blog post. I hope you enjoyed it!
 - [eleventy-plugin-vite](https://github.com/11ty/eleventy-plugin-vite)
 - [Prism](https://prismjs.com/)
 - [vite-plugin-prismjs](https://github.com/code-farmer-i/vite-plugin-prismjs)
+- [Phind](https://phind.com)
+- [markdown-it](https://github.com/markdown-it/markdown-it)
+- [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor)

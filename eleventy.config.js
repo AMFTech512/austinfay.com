@@ -1,5 +1,8 @@
 const EleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
 const VitePrismPlugin = require("vite-plugin-prismjs").default;
+const { markdownItExternalLinks } = require("./markdown-it-plugins");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
@@ -22,6 +25,9 @@ module.exports = function (eleventyConfig) {
             "clike",
             "javascript",
             "typescript",
+            "json",
+            "toml",
+            "yaml"
           ],
           theme: "okaidia",
           css: true,
@@ -29,6 +35,23 @@ module.exports = function (eleventyConfig) {
       ],
     },
   });
+
+  // configure custom md parser
+  const md = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true
+  });
+  
+  // use md plugins
+  md.use(markdownItExternalLinks);
+  md.use(markdownItAnchor, {
+    permalink: true,
+    permalinkClass: 'direct-link',
+    permalinkSymbol: '#'
+  });
+  
+  eleventyConfig.setLibrary('md', md);
 
   return {
     // Pre-process *.md files with: (default: `liquid`)

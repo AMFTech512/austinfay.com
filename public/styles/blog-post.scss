@@ -20,10 +20,14 @@ main {
     }
   }
 
-  p {
+  p, ol, ul {
     font-family: 'Times New Roman', Times, serif;
-    font-size: larger;
-    letter-spacing: .03rem;
-    line-height: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+
+    code {
+      color: lightgreen;
+      font-size: 1.1rem;
+    }
   }
 }
