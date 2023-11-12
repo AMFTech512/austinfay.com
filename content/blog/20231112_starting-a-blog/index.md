@@ -241,7 +241,7 @@ Now all of my code has pretty syntax highlighting. Yay!
 
 ## Adding features to the markdown parser
 
-It's pretty convenient that all you have to do to render markdown files is to include `{{{ content }}}` somewhere in your template. The only unfortunate part about that is that it doesn't offer much flexibility when it comes to *how* the content is rendered. There are a couple of things that I want to do with the content of the markdown files:
+It's pretty convenient that all you have to do to render markdown files is to include `\{{{ content }}}` somewhere in your template. The only unfortunate part about that is that it doesn't offer much flexibility when it comes to *how* the content is rendered. There are a couple of things that I want to do with the content of the markdown files:
 
 1. Make all external links open in a new tab
 2. Make all headings have an anchor link that can be used to link to that heading
