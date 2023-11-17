@@ -1,6 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-X1BBDFZQQ6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []; function
+      gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config',
+      'G-X1BBDFZQQ6');
+    </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,10 +23,7 @@
     <link rel="icon" href="/images/austin-headshot.jpg" />
 
     <!-- Basic SEO -->
-    <meta
-      name="description"
-      content="{{ site.description }}"
-    />
+    <meta name="description" content="{{site.description}}" />
     <meta
       name="keywords"
       content="Austin, Fay, web, fullstack, javascript, react, vue"
@@ -27,23 +33,24 @@
 
     <!-- OpenGraph metadata for social sharing -->
     <meta property="og:title" content="Austin Fay" />
+    <meta property="og:description" content="{{site.description}}" />
     <meta
-      property="og:description"
-      content="{{ site.description }}"
+      property="og:image"
+      content="https://austinfay.com/images/austin-headshot.jpg"
     />
-    <meta property="og:image" content="https://austinfay.com/images/austin-headshot.jpg" />
     <meta property="og:url" content="https://austinfay.com" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card metadata for Twitter sharing -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Austin Fay's official website" />
+    <meta name="twitter:description" content="{{site.description}}" />
     <meta
-      name="twitter:description"
-      content="{{ site.description }}"
+      name="twitter:image"
+      content="https://austinfay.com/images/austin-headshot.jpg"
     />
-    <meta name="twitter:image" content="https://austinfay.com/images/austin-headshot.jpg" />
   </head>
+
   <body>
     <main>
       <img
@@ -57,38 +64,30 @@
       </div>
       <p class="contact-link">
         <i class="far fa-envelope"></i>
-        <a href="{{ site.emailLink }}">{{ site.email }}</a>
+        <a href="{{site.emailLink}}">{{site.email}}</a>
       </p>
       <p class="contact-link">
         <i class="fab fa-twitter"></i>
-        <a href="{{ site.twitterUrl }}" target="_blank"
-          >{{ site.twitterHandle }}</a
-        >
+        <a href="{{site.twitterUrl}}" target="_blank">{{site.twitterHandle}}</a>
       </p>
       <p class="contact-link">
         <i class="fab fa-github"></i>
-        <a href="{{ site.githubUrl }}" target="_blank">{{ site.githubHandle }}</a>
+        <a href="{{site.githubUrl}}" target="_blank">{{site.githubHandle}}</a>
       </p>
       <div class="gpg-key">
-        <pre><code>{{ site.gpgKey }}</code></pre>
+        <pre><code>{{site.gpgKey}}</code></pre>
       </div>
       <button onclick="copyGpgToClipboard()" class="copy-button">
         Copy to Clipboard
       </button>
     </main>
     <script>
-      function copyGpgToClipboard() {
-        const gpgKey = document.querySelector(".gpg-key pre code");
-        const el = document.createElement("textarea");
-        el.value = gpgKey.innerText.trim();
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand("copy");
-        document.body.removeChild(el);
-        
-        // Change button text 
-        const copyButton = document.querySelector(".copy-button");
-        copyButton.innerText = "Copied!";
+      function copyGpgToClipboard() { const gpgKey =
+      document.querySelector(".gpg-key pre code"); const el =
+      document.createElement("textarea"); el.value = gpgKey.innerText.trim();
+      document.body.appendChild(el); el.select(); document.execCommand("copy");
+      document.body.removeChild(el); // Change button text const copyButton =
+      document.querySelector(".copy-button"); copyButton.innerText = "Copied!";
       }
     </script>
   </body>
