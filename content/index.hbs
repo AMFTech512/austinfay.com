@@ -1,15 +1,24 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-X1BBDFZQQ6"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || []; function
-      gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config',
-      'G-X1BBDFZQQ6');
+    <!-- Start Open Web Analytics Tracker -->
+    <script type="text/javascript">
+      //<![CDATA[
+      var owa_baseUrl = 'https://analytics.austinfay.com/';
+      var owa_cmds = owa_cmds || [];
+      owa_cmds.push(['setSiteId', '56a06912c876b99568497d0f293491ee']);
+      owa_cmds.push(['trackPageView']);
+      owa_cmds.push(['trackClicks']);
+
+      (function() {
+          var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+          owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+          _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+          var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+      }());
+      //]]>
     </script>
+    <!-- End Open Web Analytics Code -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,12 +91,18 @@
       </button>
     </main>
     <script>
-      function copyGpgToClipboard() { const gpgKey =
-      document.querySelector(".gpg-key pre code"); const el =
-      document.createElement("textarea"); el.value = gpgKey.innerText.trim();
-      document.body.appendChild(el); el.select(); document.execCommand("copy");
-      document.body.removeChild(el); // Change button text const copyButton =
-      document.querySelector(".copy-button"); copyButton.innerText = "Copied!";
+      function copyGpgToClipboard() { 
+        const gpgKey = document.querySelector(".gpg-key pre code"); 
+        const el = document.createElement("textarea"); 
+        el.value = gpgKey.innerText.trim();
+        document.body.appendChild(el); 
+        el.select(); 
+        document.execCommand("copy");
+        document.body.removeChild(el); 
+        
+        // Change button text 
+        const copyButton = document.querySelector(".copy-button"); 
+        copyButton.innerText = "Copied!";
       }
     </script>
   </body>
