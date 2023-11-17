@@ -104,6 +104,8 @@
         // Change button text 
         const copyButton = document.querySelector(".copy-button"); 
         copyButton.innerText = "Copied!";
+
+        owa_cmds.push(['trackAction', 'user-interaction', 'copied-gpg-key', 'Copied GPG key to clipboard'])
       }
     </script>
   </body>
