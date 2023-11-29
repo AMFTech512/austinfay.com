@@ -10,15 +10,6 @@
     <link rel="icon" href="/images/austin-headshot.jpg" />
 
     <!-- SEO -->
-    {{#if description}}
-      <meta name="description" content="{{description}}" />
-      <meta property="og:description" content="{{description}}" />
-      <meta name="twitter:description" content="{{description}}" />
-    {{/if}}
-
-    {{#if keywords}}
-      <meta name="keywords" content="{{keywords}}" />
-    {{/if}}
 
     <meta name="author" content="Austin Fay" />
     <meta name="robots" content="index, follow" />
@@ -39,6 +30,16 @@
       name="twitter:image"
       content="https://austinfay.com/images/austin-headshot.jpg"
     />
+
+    {{#if description}}
+      <meta name="description" content="{{description}}" />
+      <meta property="og:description" content="{{description}}" />
+      <meta name="twitter:description" content="{{description}}" />
+    {{/if}}
+
+    {{#if keywords}}
+      <meta name="keywords" content="{{keywords}}" />
+    {{/if}}
   </head>
   <body>
     <header class="banner">
