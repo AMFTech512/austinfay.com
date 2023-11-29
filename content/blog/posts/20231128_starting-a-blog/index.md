@@ -1,6 +1,8 @@
 ---
 title: Starting a Blog
 datePublished: November 28, 2023
+description: This is my first post on austinfay.com! In this post, I will tell you the motivation behind starting a blog, and how I set it up using 11ty, Vite, and Netlify.
+keywords: Austin, Fay, Austin Fay, blog, 11ty, Vite, Netlify, bun, markdown, markdown-it, prism, sass, scss, syntax highlighting, analytics, Open Web Analytics, OWA, Render, PHP, Docker, MySQL, custom domain, DNS, CNAME, shortcodes, actions, tracking, tracking script, tracking code, tracking snippet, Render
 ---
 
 Hello! This is my attempt at starting a blog. If there is at least one post after this, then you know that it was at least somewhat of a success.

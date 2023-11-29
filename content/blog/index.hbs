@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {{{ trackingScript }}}
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog</title>
-  <link rel="stylesheet" href="/styles/global.scss" />
-  <link rel="stylesheet" href="/styles/blog-index.scss" />
-</head>
-<body>
-  <header class="banner">
-    <div class="af-container">
-      <img src="/images/austin-headshot.jpg" alt="Austin Fay" class="banner-image">
-      <h1>Austin Fay</h1>
-    </div>
-    <nav class="links">
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
-    </nav>
-  </header>
-  <main>
-    <header>
-      <h1 class="section-heading">Recent Posts</h1>
+  <head>
+    {{{ trackingScript }}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Austin Fay</title>
+    <link rel="stylesheet" href="/styles/global.scss" />
+    <link rel="stylesheet" href="/styles/blog-index.scss" />
+    <link rel="icon" href="/images/austin-headshot.jpg" />
+  </head>
+  <body>
+    <header class="banner">
+      <div class="af-container">
+        <img src="/images/austin-headshot.jpg" alt="Austin Fay" class="banner-image">
+        <h1>Austin Fay</h1>
+      </div>
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+      </nav>
     </header>
-    <section class="grid">
-      {{#each collections.post}}
-        <article class="card">
-          <h2><a href="{{this.url}}">{{ this.data.title }}</a></h2>
-          <p><time>{{ this.data.datePublished }}</time></p>
-          <p>{{{ preview this.content }}}</p>
-        </article>
-      {{/each}}
-    </section>
-  </main>
-</body>
+    <main>
+      <header>
+        <h1 class="section-heading">Recent Posts</h1>
+      </header>
+      <section class="grid">
+        {{#each collections.post}}
+          <article class="card">
+            <h2><a href="{{this.url}}">{{ this.data.title }}</a></h2>
+            <p><time>{{ this.data.datePublished }}</time></p>
+            {{#if this.data.description}}
+              <p>{{{ this.data.description }}}</p>
+            {{else}}
+              <p>{{{ preview this.content }}}</p>
+            {{/if}}
+          </article>
+        {{/each}}
+      </section>
+    </main>
+  </body>
 </html>

@@ -8,6 +8,37 @@
     <link rel="stylesheet" href="/styles/global.scss" />
     <link rel="stylesheet" href="/styles/blog-post.scss" />
     <link rel="icon" href="/images/austin-headshot.jpg" />
+
+    <!-- SEO -->
+    {{#if description}}
+      <meta name="description" content="{{description}}" />
+      <meta property="og:description" content="{{description}}" />
+      <meta name="twitter:description" content="{{description}}" />
+    {{/if}}
+
+    {{#if keywords}}
+      <meta name="keywords" content="{{keywords}}" />
+    {{/if}}
+
+    <meta name="author" content="Austin Fay" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- OpenGraph metadata for social sharing -->
+    <meta property="og:title" content="{{title}}" />
+    <meta
+      property="og:image"
+      content="https://austinfay.com/images/austin-headshot.jpg"
+    />
+    <meta property="og:url" content="https://austinfay.com{{page.url}}" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card metadata for Twitter sharing -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{title}}" />
+    <meta
+      name="twitter:image"
+      content="https://austinfay.com/images/austin-headshot.jpg"
+    />
   </head>
   <body>
     <header class="banner">
