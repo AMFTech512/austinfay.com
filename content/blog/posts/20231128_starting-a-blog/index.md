@@ -1,6 +1,6 @@
 ---
 title: Starting a Blog
-datePublished: November 12, 2023
+datePublished: November 28, 2023
 ---
 
 Hello! This is my attempt at starting a blog. If there is at least one post after this, then you know that it was at least somewhat of a success.
@@ -175,6 +175,39 @@ bun install sass
 
 That's it! Now you can write `.sass` and `.scss` files and include them directly into your templates.
 
+# Fixing the 'public' directory
+
+With Vite, you can normally specify a `public` directory that contains static assets that you want to be copied over to the build directory. However, since we're using 11ty, we don't have a `public` directory. Also, I want to consolidate all of the files that I want Vite to process into a `src` directory. We can do that by adding the following to our 11ty config:
+
+```ts
+module.exports = function (eleventyConfig) {
+
+  // ...
+
+  // Copy the contents of the `public` folder to the output folder
+  // For example, `./public/css/` ends up in `_site/css/`
+  eleventyConfig.addPassthroughCopy({
+    "./public/": "/public/",
+    "./src/": "/"
+  });
+
+  // ...
+
+}
+```
+
+This makes it so that after 11ty builds the site, everything will be in the root except for the files in the public directory, which will be in a directory called `public`. This means that Vite will process everything in the root, and everything in the `public` directory will be copied to the root of the site directory that it generates. Don't worry if that doesn't make a ton of sense 😅; just know that it works.
+
+I also want to copy any images and media assets that we put inside of our content directory. This makes it so that, for example, I can put `image.png` in the folder for a blog post, and in the blog post, I can simply render it with `![Cool image](image.png)`. To do this, I added the following to my 11ty config:
+
+```ts
+// Copy all images directly
+eleventyConfig.addPassthroughCopy("**/*.jpg");
+eleventyConfig.addPassthroughCopy("**/*.png");
+eleventyConfig.addPassthroughCopy("**/*.gif");
+eleventyConfig.addPassthroughCopy("**/*.svg");
+```
+
 # Configuring syntax highlighting
 
 A lot of my blog articles are going to include code samples. For those, I want syntax highlighting so that they're easy to read. For this, I'm using [Prism](https://prismjs.com/). To get it working, I first installed the `prismjs` package:
@@ -320,6 +353,154 @@ module.exports = function (eleventyConfig) {
 ```
 
 Now all of my external links upen up with new tabs, and all of my headings have anchor links!
+
+# Setting up analytics
+
+I want to be able to know how many people are visiting my site, so I need some kind of way to track analytics. To be honest, when I started trying to implement analytics, I didn't know of any analytics platform except Google Analytics. So, naturally, that was the first thing I tried to set up. Unfortunately, I ran into a couple of issues with Google Analytics. One, it's super complicated 😅. I barely understand how it works, and all of the dashboards seem confusing to me. Second, it gets defeated by browsers that block trackers and third party cookies. I was too lazy to do serious research on different analytics platforms, but there was one that stood out to me: [Open Web Analytics](https://www.openwebanalytics.com/). This is an open-source, self-hosted project on Github. I was trying to avoid self-hosting anything since it's really easy to get in the weeds with self-hosting, but they have an easy [blueprint](https://github.com/render-examples/open-web-analytics) already configured for [Render](https://render.com). Even though I had just stumbled across it and was still a little skeptical of how well it would work for me, it has the following clear advantages:
+
+- It's open source
+- I could host it for $14/month regardless of how many sites I have and how much traffic they get
+- It's relatively easy to set up with Render
+- It would be on the same domain as my main site, so it wouldn't be blocked by browsers that block trackers and third party cookies
+- It's way less complicated than Google Analytics (and some other analytics platforms)
+
+Setting it up was fairly easy, but I got hung up on a couple of things, So I'll document them here.
+
+### Don't use their repo for the blueprint; clone the template
+
+It's tempting to click this button.
+
+![One click deploy on Render](one-click-deploy.png)
+
+But in doing so, you lose the ability to modify the config. This is especially bad, because at the time of writing this, it wasn't event set up to use the latest version of OWA. Instead, you should clone the template.
+
+Then I modified the [Dockerfile](https://github.com/render-examples/open-web-analytics/blob/be66507ea8e2bf285b8769bda7fa1e0807486aca/Dockerfile#L9) to use the latest version of OWA (which at the time of writing this was 1.7.8):
+
+```dockerfile
+# Dockerfile
+
+# ...
+
+ENV OWA_VERSION=1.7.8
+
+# ...
+```
+
+Then in the Render dashboard, go to the "Blueprints" tab and select "New Blueprint Instance." From there, connect the repository you created and allow Render to deploy it. It'll deploy an instance of the PHP application and an instance of MySQL.
+
+### Setting up a custom domain
+
+Render deploys the PHP application as a "Web Service" that has a public facing URL. I followed the instructions [here](https://render.com/docs/custom-domains#configuring-dns-to-point-to-render), but basically all you have to do is 1) add a CNAME record to your DNS configuration that points to the Render URL, and 2) configure your custom domain in the Render dashboard by going to Settings > Custom Domains for the PHP web service. The last important step is to create an environment variable called `PUBLIC_URL` for the PHP web service. This should be the URL that you want to use for your analytics. For example, I set mine to `https://analytics.austinfay.com`. Make sure you don't add a slash at the end; it will add one for you. Setting this environment variable is important because otherwise OWA will redirect to the Render URL instead of your custom domain. Once you make this change, redeploy the PHP web service by clicking "Manual Deploy."
+
+![Render dashboard](render-dashboard.png)
+
+At this point, you should be able to go to your custom domain and see the OWA dashboard.
+
+### Setting up the tracking script
+
+Upon visiting your OWA dashboard for the first time, it will prompt you to add your first site and create your first account. Once you do that, it will give you a tracking script that you can add to your site. I added mine to the `head` of my site's template. It should look something like this:
+
+```html
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+  //<![CDATA[
+  var owa_baseUrl = 'https://analytics.austinfay.com/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', '8971c79f5fff28491209f91174a0c5b6']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+  owa_cmds.push(['trackDomStream']);
+
+  (function() {
+      var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+      owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+      _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+      var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  }());
+  //]]>
+</script>
+```
+
+This is not specified very well in the docs, but you can add the following line to set the page type:
+
+```js
+owa_cmds.push(['setPageType', 'blog-post']);
+```
+
+The benefit of adding this is that you can filter by page type in the OWA dashboard.
+
+![OWA Page Types](owa-page-types.png)
+
+Once I had everything set up, I wanted to make sure not to skew my analytics by tracking my own visits while developing on localhost. To do this, I modified the function that injects the tracking script:
+
+```js
+(function() {
+  // don't track localhost
+  const isLocalhost = window.location.hostname === 'localhost';
+  if (isLocalhost) return;
+
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+```
+
+### Making a shortcode for the tracking script
+
+I don't want to copy and paste the tracking script to every template. I wish there were a better way to do this, but the best solution I could find was by creating a [shortcode](). I ended up adding the following to my `eleventy.config.js` file:
+
+```js
+eleventyConfig.addShortcode('trackingScript', () => (`<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+  //<![CDATA[
+  var owa_baseUrl = 'https://analytics.austinfay.com/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', '8971c79f5fff28491209f91174a0c5b6']);
+  owa_cmds.push(['setPageType', 'blog-post']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+  owa_cmds.push(['trackDomStream']);
+
+  (function() {
+      // don't track localhost
+      const isLocalhost = window.location.hostname === 'localhost';
+      if (isLocalhost) return;
+
+      var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+      owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+      _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+      var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  }());
+  //]]>
+</script>
+<!-- End Open Web Analytics Code -->`));
+```
+
+Then in my templates, I can simply include the following:
+
+```handlebars
+\{{{ trackingScript }}}
+```
+
+### Adding actions
+
+OWA has a concept of "actions" that you can use to track arbitrary events like button clicks. They are documented in the wiki [here](https://github.com/Open-Web-Analytics/Open-Web-Analytics/wiki/Javascript-Tracker#action-tracking). On the front page, my site has a button that allows users to copy my public PGP key. To track when people click that button, I added the following code to the button handler:
+
+```js
+owa_cmds.push([
+  'trackAction',
+  'user-interaction',
+  'copied-gpg-key',
+  'Copied GPG key to clipboard'
+]);
+```
+
+The first argument is the action group, the second is the action name, and the third is the action label. This is how it shows up in the OWA dashboard:
+
+![OWA Actions in the Dashboard](owa-actions.png)
+
+If you click on the action, it'll show you the action label as well.
 
 # Conclusion
 

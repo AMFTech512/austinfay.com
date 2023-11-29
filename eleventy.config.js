@@ -12,6 +12,12 @@ module.exports = function (eleventyConfig) {
     "./src/": "/"
   });
 
+  // Copy all images directly
+  eleventyConfig.addPassthroughCopy("**/*.jpg");
+  eleventyConfig.addPassthroughCopy("**/*.png");
+  eleventyConfig.addPassthroughCopy("**/*.gif");
+  eleventyConfig.addPassthroughCopy("**/*.svg");
+
   // Add the Vite plugin
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     viteOptions: {
@@ -28,7 +34,8 @@ module.exports = function (eleventyConfig) {
             "typescript",
             "json",
             "toml",
-            "yaml"
+            "yaml",
+            "docker"
           ],
           theme: "okaidia",
           css: true,
@@ -53,6 +60,46 @@ module.exports = function (eleventyConfig) {
   });
   
   eleventyConfig.setLibrary('md', md);
+
+  // shortcodes
+
+  eleventyConfig.addShortcode('trackingScript', () => (`<!-- Start Open Web Analytics Tracker -->
+  <script type="text/javascript">
+    //<![CDATA[
+    var owa_baseUrl = 'https://analytics.austinfay.com/';
+    var owa_cmds = owa_cmds || [];
+    owa_cmds.push(['setSiteId', '8971c79f5fff28491209f91174a0c5b6']);
+    owa_cmds.push(['setPageType', 'blog-post']);
+    owa_cmds.push(['trackPageView']);
+    owa_cmds.push(['trackClicks']);
+    owa_cmds.push(['trackDomStream']);
+
+    (function() {
+        // don't track localhost
+        const isLocalhost = window.location.hostname === 'localhost';
+        if (isLocalhost) return;
+
+        var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+        owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+        _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+        var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+    }());
+    //]]>
+  </script>
+  <!-- End Open Web Analytics Code -->`));
+
+  eleventyConfig.addShortcode('preview', function(content, length) {
+    // strip html tags
+    content = content.replace(/(<([^>]+)>)/gi, "");
+    // strip markdown links
+    content = content.replace(/\[([^\]]+)\]\([^)]+\)/gi, "$1");
+
+    // default the length to 200
+    const _length = typeof length === 'number' ? length : 250;
+
+    // return the preview
+    return `${content.substring(0,  _length).trim()}...`;
+  })
 
   return {
     // Pre-process *.md files with: (default: `liquid`)

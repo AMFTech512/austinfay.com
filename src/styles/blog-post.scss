@@ -1,3 +1,5 @@
+@use 'banner';
+
 main {
   margin: 0 auto;
   max-width: 700px;
@@ -10,7 +12,7 @@ main {
 
     > h1 {
       font-size: 2.5rem;
-      margin: 100px 0 0 0;
+      // margin: 100px 0 0 0;
     }
 
     > h5 {
@@ -29,5 +31,9 @@ main {
       color: lightgreen;
       font-size: 1.1rem;
     }
+  }
+
+  img {
+    max-width: 100%;
   }
 }

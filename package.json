@@ -3,8 +3,9 @@
   "module": "index.ts",
   "type": "commonjs",
   "scripts": {
-    "build": "eleventy",
-    "dev": "eleventy --serve"
+    "build": "bun run clean && eleventy",
+    "clean": "rm -rf _site",
+    "dev": "bun run clean && eleventy --serve"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.3",

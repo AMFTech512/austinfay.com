@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Start Open Web Analytics Tracker -->
-    <script type="text/javascript">
-      //<![CDATA[
-      var owa_baseUrl = 'https://analytics.austinfay.com/';
-      var owa_cmds = owa_cmds || [];
-      owa_cmds.push(['setSiteId', '8971c79f5fff28491209f91174a0c5b6']);
-      owa_cmds.push(['trackPageView']);
-      owa_cmds.push(['trackClicks']);
-      owa_cmds.push(['trackDomStream']);
-
-      (function() {
-          var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
-          owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
-          _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
-          var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
-      }());
-      //]]>
-    </script>
-    <!-- End Open Web Analytics Code -->
+    {{{ trackingScript }}}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,6 +53,9 @@
       <div class="heading">
         <h1>Hi, I'm Austin</h1>
         <p>I'm a web developer from <strong>Denver, Colorado</strong>.</p>
+      </div>
+      <div>
+        <a href="/blog/"><h2 class="button">Blog</h2></a>
       </div>
       <p class="contact-link">
         <i class="far fa-envelope"></i>
