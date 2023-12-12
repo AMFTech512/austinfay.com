@@ -35,7 +35,8 @@ module.exports = function (eleventyConfig) {
             "json",
             "toml",
             "yaml",
-            "docker"
+            "docker",
+            "nginx"
           ],
           theme: "okaidia",
           css: true,

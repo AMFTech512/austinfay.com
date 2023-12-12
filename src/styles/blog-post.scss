@@ -33,7 +33,18 @@ main {
     }
   }
 
+  blockquote {
+    background-color: #00213a; /* Lighter background color */
+    color: #dcdcdc; /* Darker text color */
+    border-left: 4px solid #2196f3; /* Border color on the left */
+    padding: 5px 20px; /* Spacing inside the blockquote */
+    margin: 20px 0; /* Margin around the blockquote */
+    font-style: italic; /* Italic font style */
+  }  
+
   img {
     max-width: 100%;
+    margin: auto;
+    display: block;
   }
 }
