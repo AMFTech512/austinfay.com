@@ -1,6 +1,6 @@
 ---
 title: Setting Up a Reverse Proxy for My Homelab
-datePublished: December 11, 2021
+datePublished: December 11, 2023
 description: There are some services from my homelab that I want to be exposed to the public internet. In this post, I'll show you my journey of how I set up a reverse proxy to point different domains to different services on my internal network. (it took a couple of tries, lol)
 ---
 
